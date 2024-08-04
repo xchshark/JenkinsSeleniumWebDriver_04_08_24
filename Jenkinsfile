@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        // Премахнати променливи, свързани с Chrome и ChromeDriver
-    }
-
     stages {
         stage('Checkout code') {
             steps {
