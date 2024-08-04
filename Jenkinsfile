@@ -65,8 +65,12 @@ pipeline {
 
     post {
         always {
+            // Archive test results and publish MSTest results
             archiveArtifacts artifacts: '**/TestResults/*.trx', allowEmptyArchive: true
-            junit '**/TestResults/*.trx'
+            step([
+                $class: 'MSTestPublisher',
+                testResultsFile: '**/TestResults/*.trx'
+            ])
         }
     }
 }
